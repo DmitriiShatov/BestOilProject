@@ -164,8 +164,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(113, 21);
             this.comboBox1.TabIndex = 5;
-            this.comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // groupBox6
             // 
@@ -285,6 +284,7 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Мини-кафе";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // label12
             // 
@@ -423,6 +423,7 @@
             this.checkBox3.TabIndex = 2;
             this.checkBox3.Text = "Картошка-фри";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -445,6 +446,7 @@
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "Хот-Дог";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // groupBox3
             // 
