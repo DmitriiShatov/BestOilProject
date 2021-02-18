@@ -22,12 +22,6 @@ namespace BestOilHomework
             radioButton1.Checked = true;
             comboBox1.SelectedIndexChanged += textBox2_TextChanged;
             comboBox1.SelectedIndexChanged += textBox3_TextChanged;
-            radioButton1.CheckedChanged += comboBox1_SelectedIndexChanged;
-            radioButton2.CheckedChanged += comboBox1_SelectedIndexChanged;
-            radioButton1.CheckedChanged += textBox2_TextChanged;
-            radioButton2.CheckedChanged += textBox3_TextChanged;
-            textBox2.TextChanged += comboBox1_SelectedIndexChanged;
-            textBox3.TextChanged += comboBox1_SelectedIndexChanged;
             textBox4.Text = "21,50";
             textBox7.Text = "32,80";
             textBox6.Text = "25,00";
@@ -81,7 +75,9 @@ namespace BestOilHomework
             if (radioButton1.Checked)
             {
                 textBox2.Enabled = true;
+                textBox2.Clear();
                 textBox3.Enabled = false;
+                textBox3.Clear();
             }
         }
 
@@ -90,12 +86,13 @@ namespace BestOilHomework
             if (radioButton2.Checked)
             {
                 textBox2.Enabled = false;
+                textBox2.Clear();
                 textBox3.Enabled = true;
             }
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            if (textBox3.Text.Length > 2)
+            if (textBox3.TextLength >= 2)
             {
                 double sum = 0;
                 double price = 0;
@@ -124,11 +121,6 @@ namespace BestOilHomework
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-            
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
