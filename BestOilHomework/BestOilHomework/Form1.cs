@@ -13,6 +13,11 @@ namespace BestOilHomework
     public partial class Form1 : Form
     {
         string[] oils = { "АИ-80", "АИ-92", "АИ-95", "АИ-98", "ДТ" };
+        double sumOfCafe = 0;
+        double countH = 0;
+        double countG = 0;
+        double countP = 0;
+        double countC = 0;
         public Form1()
         {
             InitializeComponent();
@@ -120,29 +125,154 @@ namespace BestOilHomework
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (checkBox3.Checked)
+            {
+                textBox10.Enabled = true;
+                textBox10.Focus();
+            }
+            else
+            {
+                sumOfCafe -= (Convert.ToDouble(textBox6.Text) * countP);
+                countP = 0;
+                textBox10.Enabled = false;
+                label5.Text = Math.Round(sumOfCafe, 2).ToString();
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            double price = 0;
-            double count = 0;
-            double res;
-
             if (checkBox1.Checked)
+            {
+                textBox8.Enabled = true;
+                textBox8.Focus();
+            }
+            else
+            {
+                sumOfCafe -= (Convert.ToDouble(textBox4.Text) * countH);
+                countH = 0;
+                textBox8.Enabled = false;
+                label5.Text = Math.Round(sumOfCafe, 2).ToString();
+            }
+        }
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+            try
             {
                 if (textBox8.Text != "")
                 {
-                    try
+                    if (Convert.ToDouble(textBox8.Text) != countH)
                     {
-                        price = Convert.ToDouble(textBox1.Text);
-                        count = Convert.ToDouble(textBox2.Text);
+                        sumOfCafe -= (Convert.ToDouble(textBox4.Text) * countH);
+                        countH = Convert.ToDouble(textBox8.Text);
+                        sumOfCafe += (Convert.ToDouble(textBox4.Text) * countH);
+                        label5.Text = Math.Round(sumOfCafe, 2).ToString();
                     }
-                    catch { MessageBox.Show("Неверный формат", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                    res = Math.Round(count * price, 2);
-                    label5.Text = res.ToString();
                 }
             }
+            catch
+            {
+                MessageBox.Show("Неверный формат", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox9.Text != "")
+                {
+                    if (Convert.ToDouble(textBox9.Text) != countG)
+                    {
+                        sumOfCafe -= (Convert.ToDouble(textBox7.Text) * countG);
+                        countG = Convert.ToDouble(textBox9.Text);
+                        sumOfCafe += (Convert.ToDouble(textBox7.Text) * countG);
+                        label5.Text = Math.Round(sumOfCafe, 2).ToString();
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Неверный формат", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            { 
+                textBox9.Enabled = true;
+                textBox9.Focus();
+            }
+            else
+            {
+                sumOfCafe -= (Convert.ToDouble(textBox7.Text) * countG);
+                countG = 0;
+                textBox9.Enabled = false;
+                label5.Text = Math.Round(sumOfCafe, 2).ToString();
+            }
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox10.Text != "")
+                {
+                    if (Convert.ToDouble(textBox10.Text) != countP)
+                    {
+                        sumOfCafe -= (Convert.ToDouble(textBox6.Text) * countP);
+                        countP = Convert.ToDouble(textBox10.Text);
+                        sumOfCafe += (Convert.ToDouble(textBox6.Text) * countP);
+                        label5.Text = Math.Round(sumOfCafe, 2).ToString();
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Неверный формат", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox4.Checked)
+            {
+                textBox11.Enabled = true;
+                textBox11.Focus();
+            }
+            else
+            {
+                sumOfCafe -= (Convert.ToDouble(textBox5.Text) * countC);
+                countC = 0;
+                textBox11.Enabled = false;
+                label5.Text = Math.Round(sumOfCafe, 2).ToString();
+            }
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox11.Text != "")
+                {
+                    if (Convert.ToDouble(textBox11.Text) != countC)
+                    {
+                        sumOfCafe -= (Convert.ToDouble(textBox5.Text) * countC);
+                        countC = Convert.ToDouble(textBox11.Text);
+                        sumOfCafe += (Convert.ToDouble(textBox5.Text) * countC);
+                        label5.Text = Math.Round(sumOfCafe, 2).ToString();
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Неверный формат", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label3.Text = (Convert.ToDouble(label4.Text) + Convert.ToDouble(label5.Text)).ToString();
         }
     }
 }
